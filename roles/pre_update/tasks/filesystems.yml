@@ -4,20 +4,20 @@
     src: /etc/fstab
     dest: /tmp/fstab.{{ ansible_hostname }}
     flat: yes
-- name: Create the directory 
-  local_action:
-    module: file
-    path: "{{ path_for_reports }}/{{region}}"
-    state: directory
-- name: Create the file
-  local_action:
-    module: file
-    path: "{{ path_for_reports }}/{{region}}/fstab_{{ ansible_hostname }}.txt"
-    state: touch
+    #- name: Create the directory 
+    #  local_action:
+    #    module: file
+    # path: "{{ path_for_reports }}/{{region}}"
+    #state: directory
+    #- name: Create the file
+    # local_action:
+    # module: file
+    # path: "{{ path_for_reports }}/{{region}}/fstab_{{ ansible_hostname }}.txt"
+    # state: touch
 - name: Move fstab entries to report file
   local_action:
     module: blockinfile
-    path: "{{ path_for_reports }}/{{ region }}/fstab_{{ ansible_hostname }}.txt"
+    path: "{{ path_for_reports }}/{{ region }}/{{ ansible_hostname }}.txt"
     block: |
       {{ lookup('file', '/tmp/fstab.{{ ansible_hostname }}') }}
     marker: "{mark}\n"

@@ -9,7 +9,7 @@
 - name: Collect basic info
   local_action:
     module: blockinfile
-    path: "{{ path_for_reports }}/{{ region }}/Basicinfo_{{ ansible_hostname }}.txt"
+    path: "{{ path_for_reports }}/{{ region }}/{{ ansible_hostname }}.txt"
     block: |
      ===================================================================================
      Date & Time: {{ansible_date_time.date}} {{ansible_date_time.time}}
