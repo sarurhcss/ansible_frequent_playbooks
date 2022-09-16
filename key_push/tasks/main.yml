@@ -1,4 +1,13 @@
 #tasks:
+
+- name: Checking the user is present or not
+  shell: id svc_ww_micuxsl1
+  when: ansible_distribution == "RedHat"
+  register: user_status
+  ignore_errors: yes
+- name: Debug the status of the user
+  debug:
+    var: user_status
 - name: creating Grooup
   group:
     name: "{{ group }}"
@@ -14,15 +23,15 @@
   user:
     name: "{{ username_rhel }}"
     state: present
-    password: $6$OjVZw3gziL6zbmVI$N5.nuABa2WgGRQxDQZDksBtULwT4bu2Sdh.uhgpHkF9HrHTZu6g04k.UUBsiAdxe2B197FKML7OuL3ckiLAEk1
+    password: $6$BkhBR65gjPjA3yIa$kg5XIWr2h1s4ccQN/XSuAeixlpzal1qfKdyb.2byoU7sPhf9pDoagUY0pUv6UoLpy5dSNJuKZQdHnEpEeg2t.1
     home: "/home/users/{{username_rhel}}"
     group: "{{ group }}"  
-  when: ansible_distribution == "RedHat"
+  when: (ansible_distribution == "RedHat") and (user_status.rc != "0")
 - name: Creating user if not present
   user:
     name: "{{ username_aix }}"
     state: present
-    password: $6$OjVZw3gziL6zbmVI$N5.nuABa2WgGRQxDQZDksBtULwT4bu2Sdh.uhgpHkF9HrHTZu6g04k.UUBsiAdxe2B197FKML7OuL3ckiLAEk1
+    password: $6$BkhBR65gjPjA3yIa$kg5XIWr2h1s4ccQN/XSuAeixlpzal1qfKdyb.2byoU7sPhf9pDoagUY0pUv6UoLpy5dSNJuKZQdHnEpEeg2t.1
     home: "/home/users/{{username_aix}}"
     shell: "/bin/bash"
     group: "{{ group }}"
