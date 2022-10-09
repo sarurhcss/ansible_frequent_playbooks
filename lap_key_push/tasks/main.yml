@@ -30,7 +30,8 @@
 #    state: directory
 #    mode: 0755
 - name: Checking the secondry group is present or not
-  shell: getent group sl2mon
+  # shell: getent group sl2mon
+  shell: 'cd /home; ls -l'
   register: group_check
   ignore_errors: yes
 
