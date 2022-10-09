@@ -34,6 +34,10 @@
   register: group_check
   ignore_errors: yes
 
+- name: Displaying the secondry group status
+  debug:
+    var: group_check
+
 - name: Creating user if not present
   user:
     name: "{{ username_rhel }}"

@@ -1,6 +1,6 @@
 {
   "ansible-node1-rhel69": {
-    "ok": 10,
+    "ok": 11,
     "failures": 0,
     "unreachable": 0,
     "changed": 3,
@@ -9,7 +9,7 @@
     "ignored": 1
   },
   "ansible-node2-rhel76": {
-    "ok": 11,
+    "ok": 12,
     "failures": 0,
     "unreachable": 0,
     "changed": 3,
@@ -18,7 +18,7 @@
     "ignored": 0
   },
   "ansible-node3-rhel86": {
-    "ok": 10,
+    "ok": 11,
     "failures": 0,
     "unreachable": 0,
     "changed": 3,
@@ -27,7 +27,7 @@
     "ignored": 1
   },
   "ansible-node4-ubuntu20": {
-    "ok": 5,
+    "ok": 6,
     "failures": 0,
     "unreachable": 0,
     "changed": 2,
