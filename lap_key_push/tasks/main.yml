@@ -1,3 +1,16 @@
+#- name: Gather facts manually
+#  setup:
+          # gather_facts: yes
+          #  register: status
+          #- name: ping hosts
+          #  ping:
+          #  register: connection_test
+          #  ignore_errors: yes
+          #  ignore_unreachable: no
+
+          #- name: result of ping
+          #  debug:
+          #    var: status  
 - name: Checking the user is present or not
   shell: id svc_ww_micuxsl1
   when: ansible_distribution == "RedHat"
@@ -16,7 +29,10 @@
 #    name: "/home/users/"
 #    state: directory
 #    mode: 0755
-
+- name: Checking the secondry group is present or not
+  shell: getent group sl2mon
+  register: group_check
+  ignore_errors: yes
 
 - name: Creating user if not present
   user:
@@ -25,7 +41,16 @@
     password: $6$BkhBR65gjPjA3yIa$kg5XIWr2h1s4ccQN/XSuAeixlpzal1qfKdyb.2byoU7sPhf9pDoagUY0pUv6UoLpy5dSNJuKZQdHnEpEeg2t.1
     home: "/home/users/{{username_rhel}}"
     group: "{{ group }}"
+    groups: "{{ group_list }}"
   when: ansible_distribution == "RedHat" and user_status.rc != 0
+
+- name: Adding the secondry group to the user if the group is present
+  user:
+    name: "{{ username_rhel }}"
+    state: present
+    groups: "{{ group_list }}"
+  when: group_check.rc == 0
+
 - name: Creating user if not present
   user:
     name: "{{ username_aix }}"

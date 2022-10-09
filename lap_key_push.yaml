@@ -4,5 +4,5 @@
   # become_method: sudo
   #`:wq`remote_user: svcansible
   roles:
-    - lap_key_push 
+    - lap_key_push
 
