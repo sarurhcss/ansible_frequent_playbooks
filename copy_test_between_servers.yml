@@ -12,7 +12,7 @@
         dest: /tmp/
         flat: yes
 - name: Move the file from Ansible to remote
-  hosts: ansible-node3-rhel86
+  hosts: all
   become: yes
   vars:
     - file_name: file1.txt
@@ -21,6 +21,7 @@
       copy:
         src: /tmp/{{ file_name }}
         dest: /tmp/
+      deligate_to: ansible-node3-rhel86
       register: status
     - name: showing the results
       debug:
