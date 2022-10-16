@@ -38,4 +38,4 @@
         path: /tmp/{{ file_name }}
         state: absent
         # when: status.failed == "false"
-      delegate_to: localhost
+      delegate_to: 127.0.0.1
