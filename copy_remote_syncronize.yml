@@ -1,0 +1,13 @@
+---
+- name: Copy filese from one server to another
+  hosts: 192.168.42.132
+  tasks:
+    - name: Copy files from src to nmon server
+      synchronize:
+        src: /tmp/file1.txt
+        dest: /tmp/file1.txt
+        mode: pull
+      delegate_to: 192.168.42.133
+      register: status
+      run_once: true
+

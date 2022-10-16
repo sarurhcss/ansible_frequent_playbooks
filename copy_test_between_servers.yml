@@ -12,30 +12,3 @@
         dest: /tmp/
         flat: yes
 
-- name: Move the file from Ansible to remote
-  hosts: ansible-node3-rhel86
-  become: yes
-  vars:
-    - file_name: file1.txt
-  tasks:
-    - name: Copy the file from tower to nmon server
-      copy:
-        src: /tmp/{{ file_name }}
-        dest: /tmp/
-      register: status
-    - name: showing the results
-      debug:
-        var: status
-- name: Removing the file from tower
-  hosts: localhost
-  become: yes
-  vars:
-    - file_name: file1.txt
-
-  tasks:
-    - name: Remove the file after copying
-      file:
-        path: /tmp/{{ file_name }}
-        state: absent
-        # when: status.failed == "false"
-      delegate_to: localhost
