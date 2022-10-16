@@ -21,7 +21,7 @@
       copy:
         src: /tmp/{{ file_name }}
         dest: /tmp/
-      deligate_to: ansible-node3-rhel86
+      delegate_to: ansible-node3-rhel86
       register: status
     - name: showing the results
       debug:
