@@ -27,7 +27,7 @@
       debug:
         var: status
 - name: Removing the file from tower
-  hosts: localhost
+  hosts: all
   become: yes
   vars:
     - file_name: file1.txt
@@ -38,4 +38,4 @@
         path: /tmp/{{ file_name }}
         state: absent
         # when: status.failed == "false"
-      delegate_to: 127.0.0.1
+      delegate_to: localhost
