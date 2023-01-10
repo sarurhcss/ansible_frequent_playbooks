@@ -1,0 +1,13 @@
+---
+- name: Creating user Suresh
+  hosts: all
+  become: yes
+  tasks:
+    - name: Creating user suresh in all the servers
+      user:
+        name: suresh
+        state: absent
+    - name: Insalling httpd
+      yum:
+        name: httpd
+        state: absent
