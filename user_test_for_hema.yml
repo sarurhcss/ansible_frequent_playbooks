@@ -1,6 +1,6 @@
 ---
 - name: User test for hema
-  hosts: ansible-node1-rhel69
+  hosts: all
   #  vars:
   #  users:
   #    - name: gopi
