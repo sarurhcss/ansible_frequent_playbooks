@@ -1,6 +1,7 @@
 ---
 - name: User test for hema
   hosts: all
+  become: yes
   #  vars:
   #  users:
   #    - name: gopi
