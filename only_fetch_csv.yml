@@ -1,5 +1,5 @@
 ---
-- hosts: ansible-node2-rhel76
+- hosts: all
   become: yes
   tasks:
   - name: find the nmon files
