@@ -1,0 +1,17 @@
+---
+- name: This playbook will create the users
+  hosts: dev
+  become: yes
+  #gather_facts: yes
+  vars:
+    - var1: present
+    - var2: absent
+  tasks:
+    - name: Creating the user ram
+      user:
+        name: ram
+        state: present
+    - name: creating the user laxman
+      user:
+        name: laxman
+        state: present
