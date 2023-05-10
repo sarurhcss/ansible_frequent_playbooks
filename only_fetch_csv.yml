@@ -41,6 +41,7 @@
       #delegate_to: localhost
       mode: '0777'
     delegate_to: localhost
+    become: yes
 
   - name: Fetch the csv files
     fetch:
