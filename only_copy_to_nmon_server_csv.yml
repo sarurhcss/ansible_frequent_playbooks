@@ -6,10 +6,11 @@
   - name: Copy the csv file from tower to nmon server
     copy:
             #src: "{{ item.dest }}"
-      src: /tmp/nmon/{{ansible_hostname}}
+      src: /tmp/nmon/{{ansible_hostname}}/
       dest: /busdata/rsm/eur0/_lgi/nmon/data/{{ansible_hostname}}/chart/
     delegate_to: ansible-node3-rhel86
     register: status2
+    remote_src: yes
     #delegate_to: ansible-tower-rhel86
     #with_items: "{{csv_status.results}}"
 
