@@ -11,7 +11,7 @@
     delegate_to: ansible-node3-rhel86
     register: status2
     become: yes
-    remote_src: yes
+    #    remote_src: yes
     #delegate_to: ansible-tower-rhel86
     #with_items: "{{csv_status.results}}"
 
