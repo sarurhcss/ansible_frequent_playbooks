@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: ansible-node2-rhel76
   become: yes
   tasks:
 
@@ -12,6 +12,8 @@
       dest: /busdata/rsm/eur0/_lgi/nmon/data/{{ansible_hostname}}/chart/
     delegate_to: ansible-node3-rhel86
     register: status2
+    #delegate_to: ansible-tower-rhel86
+    remote_src: yes
     #with_items: "{{csv_status.results}}"
 
   - name: Debug the status
