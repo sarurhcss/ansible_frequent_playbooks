@@ -39,8 +39,8 @@
       path: /tmp/nmon/{{ansible_hostname}}
       state: directory
       #delegate_to: localhost
-      mode: '0777'
-    delegate_to: ansible-tower-rhel86
+      mode: '0757'
+    delegate_to: localhost
     become: yes
 
   - name: Fetch the csv files
@@ -51,7 +51,7 @@
       flat: yes
     with_items: "{{ csv_files.files }}"
     register: csv_status
-    become: yes
+    # become: yes
 
   - debug:
       var: nmon_status
