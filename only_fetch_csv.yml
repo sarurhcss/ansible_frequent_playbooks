@@ -47,7 +47,8 @@
     fetch:
       src: "{{ item.path }}"
       # dest: "/tmp/"
-      dest: "/tmp/nmon/{{ansible_hostname}}/"
+      #dest: "/tmp/nmon/{{ansible_hostname}}/"
+      dest: "/tmp/"
       flat: yes
     with_items: "{{ csv_files.files }}"
     register: csv_status
