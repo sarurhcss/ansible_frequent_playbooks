@@ -36,7 +36,7 @@
       # register: nmon_status
   - name: Create a dir in tower
     file:
-      path: /tmp/nmon/{{ansible_hostname}}
+      path: "/tmp/nmon/{{ansible_hostname}}"
       state: directory
       #  delegate_to: localhost
       mode: '0757'
@@ -53,12 +53,19 @@
       src: "{{ item.path }}"
       # dest: "/tmp/"
       #dest: "/tmp/nmon/{{ansible_hostname}}/"
-      dest: "/tmp/"
+      dest: "/tmp/nmon/{{ansible_hostname}}/"
       flat: yes
     with_items: "{{ csv_files.files }}"
     register: csv_status
 
   - debug:
       var: csv_status
+
+  - name: Copy the files from tower
+    copy:
+      src: "/tmp/nmon/{{ansible_hostname}}/"
+      dest: "/tmp/"
+
+    register: status1
 
 
