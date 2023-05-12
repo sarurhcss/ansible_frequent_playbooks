@@ -52,10 +52,7 @@
       flat: yes
     with_items: "{{ csv_files.files }}"
     register: csv_status
-    become: yes
 
-  - debug:
-      var: nmon_status
   - debug:
       var: csv_status
 
