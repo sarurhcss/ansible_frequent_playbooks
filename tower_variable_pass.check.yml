@@ -1,0 +1,8 @@
+---
+- name: To check the pariable
+  hosts: all
+  become: yes
+  tasks:
+    - name: pass the variable to debug
+      debug:
+        msg: "The given variable is {{var1}}.
