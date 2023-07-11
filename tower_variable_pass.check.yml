@@ -5,4 +5,4 @@
   tasks:
     - name: pass the variable to debug
       debug:
-        msg: "The given variable is {{var1}}.
+        msg: "The given variable is {{var1}}."
