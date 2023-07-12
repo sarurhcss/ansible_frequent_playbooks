@@ -4,5 +4,6 @@
   become: yes
   tasks:
     - name: pass the variable to debug
-      debug:
-        msg: "The given variable is {{var1}}."
+      shell:
+        cmd: "{{var1}}"
+        chdir: /home
