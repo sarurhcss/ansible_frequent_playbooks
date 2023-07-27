@@ -1,0 +1,36 @@
+---
+- name: Identify and cleatr the sticky bit
+  hosts: all
+  become: yes
+  vars:
+          - given_dir_path: /tmp/sticky_bit_dir
+  tasks:
+    - name: Create sticky bit directories
+      file:
+        path: /tmp/sticky_bit_dir
+        state: directory
+        mode: '1755'
+      register: created_dir
+
+    - name: sticky bit directory presence now
+      shell:
+        "ls -ld {{given_dir_path}}"
+      register: permission
+
+    - name: debug the permission
+      debug:
+        msg: "The dir permission before chnage is: {{permission.stdout}}"
+
+    - name: Remove the sticky bit permission
+      shell:
+        "chmod 0755 {{given_dir_path}}"
+      register: permission_after
+
+    - name: Display the permission after change
+      shell:
+        "ls -ld {{given_dir_path}}"
+      register: permission_after
+
+    - name: debug the after permission
+      debug:
+        msg: "The dir permission after the chnage is: {{permission_after.stdout}}"
