@@ -38,6 +38,7 @@
     - name: debug the permission
       debug:
         msg: "The dir permission before chnage is: {{permission.stdout}}"
+      with_item: permission
 
 
     - name: debug the after permission
