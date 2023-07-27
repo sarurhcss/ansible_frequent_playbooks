@@ -9,15 +9,16 @@
   tasks:
     - name: Create sticky bit directories
       file:
-        path: /tmp/sticky_bit_dir
+        path: "{{item}}"
         state: directory
         mode: '1755'
       register: created_dir
+      loop: "{{given_dir_path}}"
 
     - name: sticky bit directory presence now
       shell:
         "ls -ld {{item}}"
-      loop: given_dir_path
+      loop: "{{given_dir_path}}"
       register: permission
 
 
