@@ -48,7 +48,8 @@
 
     - name: debug after permission -second method
       debug:
-        var: permission_after | json_query('results[*].stdout')
+              #var: permission_after | json_query('results[*].stdout')
+        msg: "{{permission_after | json_query('results[*].stdout')}}"
       register: var1
 
     - name: debug the var1
