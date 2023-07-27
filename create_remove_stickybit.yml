@@ -45,3 +45,7 @@
       debug:
         var: item['stdout']
       with_items: "{{permission_after['results']}}"
+
+   - name: debug after permission -second method
+     debug:
+       var: permission_after | json_query('results[*].stdout')
