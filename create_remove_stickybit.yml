@@ -35,6 +35,10 @@
       register: permission_after
       loop: "{{given_dir_path}}"
 
+    - name: debug the loop
+      debug:
+        var: permission_after
+
     - name: debug the permission
       debug:
         msg: "The dir permission before chnage is: {{permission.stdout}}"
