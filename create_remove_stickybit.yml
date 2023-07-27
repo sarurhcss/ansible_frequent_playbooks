@@ -26,14 +26,14 @@
       shell:
         "chmod 0755 {{item}}"
       register: permission_after
-      loop: "{{given_dir_path}}"
+      loop: "{{given_dir_path_var}}"
 
 
     - name: Display the permission after change
       shell:
         "ls -ld {{item}}"
       register: permission_after
-      loop: "{{given_dir_path}}"
+      loop: "{{given_dir_path_var}}"
 
       # - name: debug the loop
       # debug:
@@ -47,7 +47,7 @@
       #with_items: "{{permission_after['results']}}"
     - name: Permission before the change
       debug:
-              #var: permission_after | json_query('results[*].stdout')
+              #var: permission_af<F6>ter | json_query('results[*].stdout')
         msg: "{{permission | json_query('results[*].stdout')}}"
       register: var1
 
