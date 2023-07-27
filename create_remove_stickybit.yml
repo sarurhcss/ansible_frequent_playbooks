@@ -24,14 +24,14 @@
 
     - name: Remove the sticky bit permission
       shell:
-        "chmod 0755 {{given_dir_path}}"
+        "chmod 0755 {{item}}"
       register: permission_after
       loop: "{{given_dir_path}}"
 
 
     - name: Display the permission after change
       shell:
-        "ls -ld {{given_dir_path}}"
+        "ls -ld {{item}}"
       register: permission_after
       loop: "{{given_dir_path}}"
 
