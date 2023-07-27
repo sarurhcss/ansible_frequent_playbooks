@@ -56,5 +56,4 @@
         var: var1
     - name: final
       debug:
-        msg: The file permission is {{item.permission_after | json_query('results[*].stdout')}}
-      with_items: "{{var1}}"
+        msg: The file permission is {{permission_after.results|map(attribute='stdout')|list}}
