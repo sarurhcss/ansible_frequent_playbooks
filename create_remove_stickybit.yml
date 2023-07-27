@@ -35,31 +35,37 @@
       register: permission_after
       loop: "{{given_dir_path}}"
 
-    - name: debug the loop
+      # - name: debug the loop
+      # debug:
+      #  var: permission_after
+
+
+
+      # - name: debug the after permission
+      # debug:
+      #  var: item['stdout']
+      #with_items: "{{permission_after['results']}}"
+    - name: Permission before the change
       debug:
-        var: permission_after
+              #var: permission_after | json_query('results[*].stdout')
+        msg: "{{permission | json_query('results[*].stdout')}}"
+      register: var1
 
 
-
-    - name: debug the after permission
-      debug:
-        var: item['stdout']
-      with_items: "{{permission_after['results']}}"
-
-    - name: debug after permission -second method
+    - name: Results of permission after the change
       debug:
               #var: permission_after | json_query('results[*].stdout')
         msg: "{{permission_after | json_query('results[*].stdout')}}"
-      register: var1
+      register: var2
 
-    - name: debug the var1
-      debug:
-        var: var1
-    - name: final
-      debug:
-        msg: The file permission is {{permission_after.results|map(attribute='stdout')|list}}
+      #    - name: debug the var1
+      #debug:
+      #$  var: var1
+      # - name: final
+      # debug:
+      #  msg: The file permission is {{permission_after.results|map(attribute='stdout')|list}}
 
-    - name: final2
-      debug:
-        msg: The file permission is {{permission_after.results|map(attribute='stdout')|join('|')}}
+      # - name: final2
+      # debug:
+      #  msg: The file permission is {{permission_after.results|map(attribute='stdout')|join('|')}}
 
