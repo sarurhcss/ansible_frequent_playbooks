@@ -26,12 +26,14 @@
       shell:
         "chmod 0755 {{given_dir_path}}"
       register: permission_after
+      loop: "{{given_dir_path}}"
 
 
     - name: Display the permission after change
       shell:
         "ls -ld {{given_dir_path}}"
       register: permission_after
+      loop: "{{given_dir_path}}"
 
     - name: debug the permission
       debug:
