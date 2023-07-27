@@ -57,3 +57,8 @@
     - name: final
       debug:
         msg: The file permission is {{permission_after.results|map(attribute='stdout')|list}}
+
+    - name: final2
+      debug:
+        msg: The file permission is {{permission_after.results|map(attribute='stdout')|join('|')}}
+
