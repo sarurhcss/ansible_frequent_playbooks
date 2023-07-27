@@ -16,7 +16,8 @@
 
     - name: sticky bit directory presence now
       shell:
-        "ls -ld {{given_dir_path}}"
+        "ls -ld {{item}}"
+      loop: given_dir_path
       register: permission
 
 
