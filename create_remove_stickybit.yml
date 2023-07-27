@@ -39,12 +39,8 @@
       debug:
         var: permission_after
 
-    - name: debug the permission
-      debug:
-        msg: "The dir permission before chnage is: {{permission.stdout}}"
-      with_items: permission
 
 
     - name: debug the after permission
       debug:
-        msg: "The dir permission after the chnage is: {{permission_after.stdout}}"
+        msg: "The dir permission after the chnage is: {{permission_after.results.stdout}}"
