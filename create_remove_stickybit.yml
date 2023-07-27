@@ -23,15 +23,16 @@
         "chmod 0755 {{given_dir_path}}"
       register: permission_after
 
-    - name: debug the permission
-      debug:
-        msg: "The dir permission before chnage is: {{permission.stdout}}"
-
 
     - name: Display the permission after change
       shell:
         "ls -ld {{given_dir_path}}"
       register: permission_after
+
+    - name: debug the permission
+      debug:
+        msg: "The dir permission before chnage is: {{permission.stdout}}"
+
 
     - name: debug the after permission
       debug:
