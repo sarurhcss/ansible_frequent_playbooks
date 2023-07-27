@@ -43,5 +43,5 @@
 
     - name: debug the after permission
       debug:
-        msg: "The dir permission after the chnage is: {{item['stdout']}}"
+        var: "{{item['stdout']}}"
       with_items: "{{permission_after['results']}}"
