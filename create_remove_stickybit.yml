@@ -43,5 +43,5 @@
 
     - name: debug the after permission
       debug:
-        var: "{{item['stdout']}}"
+        var: {{item['stdout']}}
       with_items: "{{permission_after['results']}}"
