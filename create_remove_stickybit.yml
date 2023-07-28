@@ -20,8 +20,8 @@
         "ls -ld {{item.given_dir_path_var}}"
         #loop: "{{given_dir_path}}"
       register: permission
-      delegate_to: {{item.name}}
-      loop: {{server_name}}
+      delegate_to: "{{item.name}}"
+      loop: "{{server_name}}"
 
 
 
@@ -29,8 +29,8 @@
       shell:
         "chmod 0755 {{item.given_dir_path_var}}"
       register: permission_after
-      loop: {{server_name}}
-      delegate_to: {{item.name}}
+      loop: "{{server_name}}"
+      delegate_to: "{{item.name}}"
 
 
     - name: Display the permission after change
@@ -38,7 +38,7 @@
         "ls -ld {{item.given_dir_path_var}}"
       register: permission_after
       loop: "{{server_name}}"
-      delegate_to: {{item.name}}
+      delegate_to: "{{item.name}}"
 
       # - name: debug the loop
       # debug:
