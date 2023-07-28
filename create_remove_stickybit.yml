@@ -20,8 +20,8 @@
         "ls -ld {{item.given_dir_path_var}}"
         #loop: "{{given_dir_path}}"
       register: permission
-      delegate_to: "{{item.name}}"
-      with_items: "{{server_name}}"
+      delegate_to: "{{item.srv1}}"
+      loop: "{{server_name}}"
 
 
 
