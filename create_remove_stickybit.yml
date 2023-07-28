@@ -20,6 +20,7 @@
         "ls -ld {{item}}"
       loop: "{{given_dir_path}}"
       register: permission
+      delegate_to: {{server_name}}
 
 
     - name: Remove the sticky bit permission
@@ -34,6 +35,7 @@
         "ls -ld {{item}}"
       register: permission_after
       loop: "{{given_dir_path_var}}"
+      delegate_to: {{server_name}}
 
       # - name: debug the loop
       # debug:
