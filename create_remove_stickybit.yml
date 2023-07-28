@@ -17,7 +17,8 @@
 
     - name: sticky bit directory presence now
       shell:
-        "chmod 0755 {{item.given_dir_path_var}}"
+              # "chmod 0755 {{item.given_dir_path_var}}"
+        "chmod 0755 /tmp/sticky_bit_dir"
         #loop: "{{given_dir_path}}"
       register: permission
       delegate_to: ansible-node1-rhel69
