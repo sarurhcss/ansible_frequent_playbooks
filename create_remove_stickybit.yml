@@ -17,25 +17,28 @@
 
     - name: sticky bit directory presence now
       shell:
-        "ls -ld {{item}}"
-      loop: "{{given_dir_path}}"
+        "ls -ld {{item.given_dir_path_var}}"
+        #loop: "{{given_dir_path}}"
       register: permission
-      delegate_to: {{server_name}}
+      delegate_to: {{item.name}}
+      loop: {{server_name}}
+
 
 
     - name: Remove the sticky bit permission
       shell:
-        "chmod 0755 {{item}}"
+        "chmod 0755 {{item.given_dir_path_var}}"
       register: permission_after
-      loop: "{{given_dir_path_var}}"
+      loop: {{server_name}}
+      delegate_to: {{item.name}}
 
 
     - name: Display the permission after change
       shell:
-        "ls -ld {{item}}"
+        "ls -ld {{item.given_dir_path_var}}"
       register: permission_after
-      loop: "{{given_dir_path_var}}"
-      delegate_to: {{server_name}}
+      loop: "{{server_name}}"
+      delegate_to: {{item.name}}
 
       # - name: debug the loop
       # debug:
