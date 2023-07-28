@@ -21,7 +21,7 @@
         #loop: "{{given_dir_path}}"
       register: permission
       delegate_to: "{{item.name}}"
-      loop: "{{server_name}}"
+      with_items: "{{server_name}}"
 
 
 
