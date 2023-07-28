@@ -17,12 +17,12 @@
 
     - name: sticky bit directory presence now
       shell:
-        "ls -ld {{item.given_dir_path_var}}"
+        "chmod 0755 {{item.given_dir_path_var}}"
         #loop: "{{given_dir_path}}"
       register: permission
       delegate_to: "{{item.srv1}}"
       loop: "{{server_name}}"
-
+      become: yes
 
 
     - name: Remove the sticky bit permission
