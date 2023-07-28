@@ -21,7 +21,7 @@
         "chmod 0755 /tmp/sticky_bit_dir"
         #loop: "{{given_dir_path}}"
       register: permission
-      delegate_to: "{{item.name}}"
+      delegate_to: "{{item.srv1}}"
       loop: "{{server_name}}"
       become: yes
 
