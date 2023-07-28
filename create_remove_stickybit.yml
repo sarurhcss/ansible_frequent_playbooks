@@ -21,7 +21,7 @@
         "chmod 0755 /tmp/sticky_bit_dir"
         #loop: "{{given_dir_path}}"
       register: permission
-      delegate_to: ansible-node1-rhel69
+      delegate_to: "{{item.name}}"
       loop: "{{server_name}}"
       become: yes
 
