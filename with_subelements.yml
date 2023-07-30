@@ -4,7 +4,7 @@
   vars:
     server_name:
       - srv1: "{{server_fqdn}}"
-        dirpath:
+        dirpath: "{{path_list}}"
                 # - "{{cmd_path}}"
           - 'chmod 0755 /tmp/sticky_bit_dir'
           - 'chmod 0755 /tmp/sticky_bit_dir2'
