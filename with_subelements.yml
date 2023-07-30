@@ -29,13 +29,13 @@
       debug:
         msg: "This message from {{ansible_hostname}}"
 
-    - name: Create sticky bit directories
-      file:
-        path: "{{item}}"
-        state: directory
-        mode: '1755'
-      register: created_dir
-      loop: "{{given_dir_path}}"
+        #    - name: Create sticky bit directories
+        # file:
+        # path: "{{item}}"
+        # state: directory
+        # mode: '1755'
+        # register: created_dir
+        # loop: "{{given_dir_path}}"
 
 
     - name: apply the command
