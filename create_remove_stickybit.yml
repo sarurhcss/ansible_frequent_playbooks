@@ -10,7 +10,7 @@
       - srv1: ansible-node1-rhel69
         dirpath:
 	  - /tmp/sticky_bit_dir
-	  - /tmp/sticky_bit_dir2server_name:
+	  - /tmp/sticky_bit_dir2
   - srv1: ansible-node1-rhel69
     dirpath:
 	  - /tmp/sticky_bit_dir
