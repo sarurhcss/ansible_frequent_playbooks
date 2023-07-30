@@ -1,9 +1,9 @@
 ---
 - name: test
-  hosts: ansible-node3-rhel86
+  hosts: all
   vars:
     server_name:
-      - srv1: ansible-node1-rhel69
+      - srv1: "{{server_fqdn}}"
         dirpath:
           - 'chmod 0750 {{path}}'
             # - 'chmod 0755 /tmp/sticky_bit_dir'
