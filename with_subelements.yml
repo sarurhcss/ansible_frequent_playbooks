@@ -6,9 +6,9 @@
       - srv1: "{{server_fqdn}}"
         dirpath: "{{path_list}}"
                 # - "{{cmd_path}}"
-          - 'chmod 0755 /tmp/sticky_bit_dir'
-          - 'chmod 0755 /tmp/sticky_bit_dir2'
-          - 'chmod 0755 /tmp/sticky_bit_dir100'
+                # - 'chmod 0755 /tmp/sticky_bit_dir'
+                # - 'chmod 0755 /tmp/sticky_bit_dir2'
+                # - 'chmod 0755 /tmp/sticky_bit_dir100'
           # - srv1: ansible-node2-rhel76
             # dirpath:
             # - 'chmod 0755 /tmp/sticky_bit_dir'
