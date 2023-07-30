@@ -22,7 +22,7 @@
           # loop: "{{given_dir_path}}"
 
     - name: sticky bit directory presence now
-      shell:
+      command:
          "{{item.dirpath}}"
         #loop: "{{given_dir_path}}"
         #register: permission
