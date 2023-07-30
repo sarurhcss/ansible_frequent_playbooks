@@ -15,10 +15,13 @@
             # - 'chmod 0755 /tmp/sticky_bit_dir2'
             # - 'chmod 0755 /tmp/sticky_bit_dir3'
     given_dir_path:
-      - /tmp/sticky_bit_dir
+      - /tmp/sticky_bit_dir1
         /tmp/sticky_bit_dir2
         /tmp/sticky_bit_dir3
         /tmp/sticky_bit_dir4
+        /tmp/sticky_bit_dir5
+        /tmp/sticky_bit_dir6
+        /tmp/sticky_bit_dir7
  
 
   tasks:
