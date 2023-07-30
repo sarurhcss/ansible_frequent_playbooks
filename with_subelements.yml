@@ -1,0 +1,45 @@
+---
+- name: test
+  hosts: ansible-node3-rhel86
+  vars:
+    server_name:
+      - srv1: ansible-node1-rhel69
+        dirpath:
+          - '{{cmd}} {value}} {{path}}'
+            # - 'chmod 0755 /tmp/sticky_bit_dir'
+            # - 'chmod 0755 /tmp/sticky_bit_dir2'
+            # - 'chmod 0755 /tmp/sticky_bit_dir100'
+            # - srv1: ansible-node2-rhel76
+            # dirpath:
+            # - 'chmod 0755 /tmp/sticky_bit_dir'
+            # - 'chmod 0755 /tmp/sticky_bit_dir2'
+            # - 'chmod 0755 /tmp/sticky_bit_dir3'
+    given_dir_path:
+      - /tmp/sticky_bit_dir
+        /tmp/sticky_bit_dir2
+        /tmp/sticky_bit_dir3
+        /tmp/sticky_bit_dir4
+ 
+
+  tasks:
+    - name: Just Print a hallo
+      debug:
+        msg: "This message from {{ansible_hostname}}"
+
+    - name: Create sticky bit directories
+      file:
+        path: "{{item}}"
+        state: directory
+        mode: '1755'
+      register: created_dir
+      loop: "{{given_dir_path}}"
+
+
+    - name: apply the command
+      shell:
+        "{{item.1}}"
+      delegate_to: "{{item.0.srv1}}"
+      with_subelements:
+        - "{{server_name}}"
+        - dirpath
+  
