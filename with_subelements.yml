@@ -2,10 +2,10 @@
 - name: test
   hosts: all
   vars:
-    server_name:
-      - srv1: "{{server_fqdn}}"
-        dirpath:
-          - "{{cmd_path}}"
+          # server_name:
+          # - srv1: "{{server_fqdn}}"
+          # dirpath:
+                # - "{{cmd_path}}"
             # - 'chmod 0755 /tmp/sticky_bit_dir'
             # - 'chmod 0755 /tmp/sticky_bit_dir2'
             # - 'chmod 0755 /tmp/sticky_bit_dir100'
