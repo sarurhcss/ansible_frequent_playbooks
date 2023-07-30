@@ -22,7 +22,7 @@
 
     - name: sticky bit directory presence now
       shell:
-         "{{item. dirpath(',') | list}}"
+         "{{item. dirpath.split(',') | list}}"
         #loop: "{{given_dir_path}}"
         #register: permission
       #delegate_to: ansible-node1-rhel69
