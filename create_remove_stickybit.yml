@@ -3,22 +3,22 @@
   hosts: all
   become: yes
   vars:
-    given_dir_path: 
-      - /tmp/sticky_bit_dir
-      - /tmp/sticky_bit_dir2
+          # given_dir_path: 
+          #  - /tmp/sticky_bit_dir
+          #   - /tmp/sticky_bit_dir2
     server_name:
       - srv1: ansible-node1-rhel69
         dirpath:
           - /tmp/sticky_bit_dir
           - /tmp/sticky_bit_dir2
   tasks:
-    - name: Create sticky bit directories
-      file:
-        path: "{{item}}"
-        state: directory
-        mode: '1755'
-      register: created_dir
-      loop: "{{given_dir_path}}"
+          # - name: Create sticky bit directories
+          # file:
+          # path: "{{item}}"
+          # state: directory
+          # mode: '1755'
+          # register: created_dir
+          # loop: "{{given_dir_path}}"
 
     - name: sticky bit directory presence now
       shell:
