@@ -8,9 +8,8 @@
           #   - /tmp/sticky_bit_dir2
     server_name:
       - srv1: ansible-node1-rhel69
-        dirpath:
-          - /tmp/sticky_bit_dir
-          - /tmp/sticky_bit_dir2
+        dirpath: '/tmp/sticky_bit_dir'
+        #- /tmp/sticky_bit_dir2
   tasks:
           # - name: Create sticky bit directories
           # file:
