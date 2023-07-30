@@ -9,6 +9,7 @@
     server_name:
       - srv1: ansible-node1-rhel69
         dirpath: ['chmod 0755 /tmp/sticky_bit_dir','chmod 0755 /tmp/sticky_bit_dir']
+        #dirpath: ['/tmp/sticky_bit_dir', '/tmp/sticky_bit_dir2']
             # - 'chmod 0755 /tmp/sticky_bit_dir2'
         # - '/tmp/sticky_bit_dir2'
   tasks:
@@ -22,7 +23,8 @@
 
     - name: sticky bit directory presence now
       shell:
-         "{{item. dirpath.split(',') | list}}"
+        "{{item.dirpath}}"
+              #"{{item. dirpath.split(',') | list}}"
         #loop: "{{given_dir_path}}"
         #register: permission
       #delegate_to: ansible-node1-rhel69
