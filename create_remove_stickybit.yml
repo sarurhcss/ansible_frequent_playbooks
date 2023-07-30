@@ -8,7 +8,7 @@
           #   - /tmp/sticky_bit_dir2
     server_name:
       - srv1: ansible-node1-rhel69
-        dirpath: ['chmod 0755 /tmp/sticky_bit_dir']
+        dirpath: 'chmod 0755 /tmp/sticky_bit_dir'
         #dirpath: ['/tmp/sticky_bit_dir', '/tmp/sticky_bit_dir2']
             # - 'chmod 0755 /tmp/sticky_bit_dir2'
         # - '/tmp/sticky_bit_dir2'
