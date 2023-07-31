@@ -47,8 +47,7 @@
         - dirpath
     - name: read the permission
       debug:
-        msg: "Permission before change {{ permission_before.stdout }}"
-      with_items: "{{permission_before}}"
+        var: permission_before.stdout
 
     - name: apply the command
       shell:
