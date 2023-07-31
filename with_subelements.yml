@@ -47,8 +47,11 @@
         - dirpath
     - name: read the permission
       debug:
-        var: permission_before.stdout
-      loop: "{{permission_before}}"
+        var: permission_before
+
+    - name: Read the permission after as message
+      debug:
+        msg: "{{permission_after | json_query('results[*].stdout')}}"
     - name: apply the command
       shell:
         "chmod 0750 {{item.1}}"
