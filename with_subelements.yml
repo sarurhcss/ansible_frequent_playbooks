@@ -81,7 +81,7 @@
 
     - name: Read the permission before as message
       debug:
-        msg: "{{permission_before.results|map(attribute='item')|join('/')}}"
+        msg: "{{permission_before.results|map(attribute='item')|list('|')}}"
         # delegate_to: "{{item.0.srv1}}"
         # with_subelements:
         # - "{{server_name}}"
