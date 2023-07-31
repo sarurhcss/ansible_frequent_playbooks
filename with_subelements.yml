@@ -45,6 +45,9 @@
       with_subelements:
         - "{{server_name}}"
         - dirpath
+    - name: read the permission
+      debug:
+        var: permission_before
 
     - name: apply the command
       shell:
