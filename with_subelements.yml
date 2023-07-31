@@ -55,7 +55,7 @@
 
     - name: apply the command
       shell:
-        "chmod 0750 {{item.1}}"
+        "chmod o-w {{item.1}}"
       delegate_to: "{{item.0.srv1}}"
       with_subelements:
         - "{{server_name}}"
