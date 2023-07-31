@@ -87,7 +87,7 @@
 
     - name: Read the permission after as message
       debug:
-        debug: var1 
+        var: var1 
 
         # delegate_to: "{{item.0.srv1}}"
         # with_subelements:
