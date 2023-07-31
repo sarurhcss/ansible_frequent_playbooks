@@ -42,7 +42,8 @@
       shell:
         "ls -ld {{item.1}}"
       register: permission_before
-      delegate_to: "{{item.0.srv1}}"
+      #delegate_to: "{{item.0.srv1}}"
+      delegate_to: "{{item.0.srv*}}"
       with_subelements:
         - "{{server_name}}"
         - dirpath
