@@ -1,6 +1,7 @@
 ---
 - name: test
   hosts: all
+  ignore_errors: yes
   vars:
           #server_name:
           # - srv1: "{{server_fqdn}}"
