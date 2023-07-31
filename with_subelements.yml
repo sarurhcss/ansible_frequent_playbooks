@@ -45,13 +45,14 @@
       with_subelements:
         - "{{server_name}}"
         - dirpath
-    - name: read the permission
-      debug:
-        var: permission_before
+          # - name: read the permission
+          # debug:
+          # var: permission_before
 
     - name: Read the permission after as message
       debug:
         msg: "{{permission_before | json_query('results[*].stdout')}}"
+
     - name: apply the command
       shell:
         "chmod 0750 {{item.1}}"
@@ -59,4 +60,23 @@
       with_subelements:
         - "{{server_name}}"
         - dirpath
+
+    - name: Display the permission after the change
+      shell:
+        "ls -ld {{item.1}}"
+      register: permission_after
+      delegate_to: "{{item.0.srv1}}"
+      with_subelements:
+        - "{{server_name}}"
+        - dirpath
+
+    - name: Read the permission before as message
+      debug:
+        msg: "{{permission_before | json_query('results[*].stdout')}}"
+
+
+    - name: Read the permission after as message
+      debug:
+        msg: "{{permission_after | json_query('results[*].stdout')}}"
+
   
