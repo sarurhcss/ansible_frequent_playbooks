@@ -47,7 +47,7 @@
         - dirpath
     - name: read the permission
       debug:
-        var: permission_before
+        msg: "Permission before change {{ permission_before.stdout }}"
 
     - name: apply the command
       shell:
