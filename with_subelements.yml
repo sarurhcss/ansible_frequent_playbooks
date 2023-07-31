@@ -85,7 +85,7 @@
 
     - name: Read the permission after as message
       debug:
-        msg: "{{permission_before.results | json_query('results[*].item')}}"
+        msg: "{{permission_before | json_query('results[*].item')}}"
 
         # delegate_to: "{{item.0.srv1}}"
         # with_subelements:
