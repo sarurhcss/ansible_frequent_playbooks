@@ -50,6 +50,9 @@
           # - name: read the permission
           # debug:
           # var: permission_before
+    - name: reading variable
+      debug:
+        var: permission_before
 
     - name: Read the permission after as message
       debug:
@@ -71,6 +74,10 @@
       with_subelements:
         - "{{server_name}}"
         - dirpath
+
+    - name: read the variable
+      debug:
+        var: permission_after
 
     - name: Read the permission before as message
       debug:
