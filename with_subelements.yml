@@ -82,10 +82,12 @@
     - name: Read the permission before as message
       debug:
         msg: "{{permission_before.results|map(attribute='item')|list|unique}}"
+      register: var1
+
 
     - name: Read the permission after as message
       debug:
-        msg: "{{permission_before | json_query('results[*].item.srv1[*]')}}"
+        debug: var1 
 
         # delegate_to: "{{item.0.srv1}}"
         # with_subelements:
