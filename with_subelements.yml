@@ -73,10 +73,18 @@
     - name: Read the permission before as message
       debug:
         msg: "{{permission_before | json_query('results[*].stdout')}}"
+      delegate_to: "{{item.0.srv1}}"
+      with_subelements:
+        - "{{server_name}}"
+        - dirpath
 
 
     - name: Read the permission after as message
       debug:
         msg: "{{permission_after | json_query('results[*].stdout')}}"
+      delegate_to: "{{item.0.srv1}}"
+      with_subelements:
+        - "{{server_name}}"
+        - dirpath
 
   
