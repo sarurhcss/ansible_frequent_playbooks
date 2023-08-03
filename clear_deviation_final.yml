@@ -1,7 +1,5 @@
 ---
 - name: Clearing the deviation for the given files
-  hosts: ansible-node1-rhel69
-  ignore_errors: yes- name: test
   hosts: all
   ignore_errors: yes
   tasks:
