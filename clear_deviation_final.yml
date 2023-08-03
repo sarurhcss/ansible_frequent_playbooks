@@ -23,7 +23,7 @@
     - name: checking the current directory permission 
       debug:
         msg: "{{item.item}} - FALSE POSITIVE"
-      when: (item.stat.exists == true) and ( item.stat.woth == true )
+      when: (item.stat.exists == true) and ( item.stat.woth == false )
       with_items: "{{file_perm_current.results}}"
       register: ow_stat
       ignore_errors: yes
