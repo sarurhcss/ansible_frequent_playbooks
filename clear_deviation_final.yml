@@ -57,11 +57,11 @@
 
 
 
-    - name: Result - Printing the give directory status 
+    - name: Result - Printing the given directory status 
       debug:
         msg: "{{dir_stat.results|selectattr('msg','defined')| map(attribute='msg')|flatten}}"
 
-    - name: Result - Printing false positive message
+    - name: Result - Printing false positive message 
       debug:
         msg: "{{ow_stat.results|selectattr('msg','defined')| map(attribute='msg')|flatten}}"
 
