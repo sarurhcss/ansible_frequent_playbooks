@@ -28,7 +28,7 @@
 
     - name: Analyzing the permission before the change
       shell:
-          "hostname ;ls -ld {{item.1}}"
+          "hostname; ls -ld {{item}}"
       register: permission_before
       #delegate_to: "{{item.0.srv1}}"
       with_items:
