@@ -13,7 +13,7 @@
     
     - name: Checking the presence of the given directory
       debug:
-        msg: "This dir is not present {{item.item}}"
+        msg: "This directory is not present {{item.item}}"
       when: not item.stat.exists
       with_items: "{{file_perm_current.results}}"
       register: dir_stat
