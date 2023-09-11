@@ -1,6 +1,6 @@
 ---
 - name: Getting the details of windows disk
-  hosts: win
+  hosts: all
   become: false
   vars:
     - script_path: C:\Users\Administrator\Desktop\disk.ps1
