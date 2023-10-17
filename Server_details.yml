@@ -1,6 +1,6 @@
 ---
 - 
-  hosts:  ansible-node3-rhel86
+  hosts:  all ##ansible-node3-rhel86 ansible-node2-rhel76
   ignore_errors: true
   gather_facts: yes
   vars:
