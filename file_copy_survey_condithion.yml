@@ -3,8 +3,8 @@
   hosts: all
   become: yes
   ignore_errors: yes
-  vars:
-    var1: OK
+  #vars:
+  #  var1: OK
   tasks:
     - name: copy a file from git to target server
       copy:
