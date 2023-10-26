@@ -1,6 +1,6 @@
 ---
 - 
-  hosts:  all ##ansible-node3-rhel86 ansible-node2-rhel76
+  hosts:  ansible-node3-rhel86 ansible-node2-rhel76
   ignore_errors: true
   gather_facts: yes
   vars:
@@ -35,17 +35,36 @@
         Kernel: "{{ansible_kernel}}"
 
     - name: Getting all the package installed on a specific month
-      shell:
-        "rpm -qa --last | grep -i 2022 | grep -i Jun"
+      shell: rpm -qa --last | grep -i 2022 | grep -i Jun
       register: Installed_package
+      delegate_to: localhost
     - name: Installed package out put
       debug:
         var: Installed_package
 
+    - name: copy to  a txt file
+      copy:
+        dest: "/tmp/find_results.txt"
+        content: |
+           "{{ansible_hostname}}"     
+           "{{item}}"
+      with_items: "{{Installed_package.stdout}}"
+      delegate_to: localhost
+    - name: cat the file
+      shell: 
+        "cat /tmp/find_results.txt"
+      register: cat
+      delegate_to: localhost
+    - name: debug the cat
+      debug:
+        var: cat
+
+
     - name: Build out CSV file
       ansible.builtin.lineinfile:
         dest: "{{ csv_path }}/{{ csv_filename }}"
-        line: "{{ Server_Name }},{{ Server_Hostname }},{{ ansible_distribution }},{{ Server_OS_Version }},{{IP_Address}},{{Kernel}},{{Installed_package.stdout_lines|join(' | ')}}" 
+        #line: "{{ Server_Name }},{{ Server_Hostname }},{{ ansible_distribution }},{{ Server_OS_Version }},{{IP_Address}},{{Kernel}},{{Installed_package.stdout_lines|join(' | ')}}" 
+        line: "{{ Server_Name }},{{ Server_Hostname }},{{ ansible_distribution }},{{ Server_OS_Version }},{{IP_Address}},{{Kernel}},{{cat.stdout_lines|join('|')}}" 
         create: true
         state: present
         insertafter: EOF
