@@ -9,6 +9,6 @@
     - name: copy a file from git to target server
       copy:
         src: test.txt
-        dest: /etc/facts2_txt.txt
+        dest: /etc/facts3_txt.txt
         mode: '0644'
       when: "'OK' in var1"
