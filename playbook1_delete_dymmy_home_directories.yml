@@ -7,11 +7,11 @@
 
     - name: Delete the dummy home directories
       file:
-        path: "{{home_dir}}/{{user_dir}}"
+        path: "{{home_dir}}/{{item}}"
         state: absent
       become: yes
 
-        #  loop:
-        # - suresh
+      loop:
+        - "{{user_dir}}"
         # - chandru
         # - balaj
