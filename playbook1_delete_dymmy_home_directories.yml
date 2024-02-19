@@ -11,7 +11,6 @@
         state: absent
       become: yes
 
-      loop:
-        - "{{user_dir}}"
+      loop: "{{user_dir}}"
         # - chandru
         # - balaj
