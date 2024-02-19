@@ -9,6 +9,7 @@
       file:
         path: "{{home_dir}}/{{user_dir}}"
         state: absent
+      become: yes
 
         #  loop:
         # - suresh
