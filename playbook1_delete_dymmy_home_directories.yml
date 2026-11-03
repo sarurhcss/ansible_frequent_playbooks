@@ -1,11 +1,7 @@
 ---
 - name: Delete the Home Dir
   hosts: all
-  #  vars:
-  # - home_dir: /home/users
-  tasks:
-    
-
+  tasks:  
     - name: Display orphan directories selected for deletion
       ansible.builtin.debug:
         msg: "Server: {{ inventory_hostname }} | Directory: {{ item }}"
