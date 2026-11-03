@@ -4,13 +4,16 @@
   #  vars:
   # - home_dir: /home/users
   tasks:
+    
 
-    - name: Delete the dummy home directories
-      file:
-        path: "{{home_dir}}/{{item}}"
-        state: absent
+    - name: Display orphan directories selected for deletion
+      ansible.builtin.debug:
+        msg: "Server: {{ inventory_hostname }} | Directory: {{ item }}"
+      loop: "{{ orphan_dirs_by_host[inventory_hostname] | default([]) }}"
+
+    - name: Delete the selected orphan home directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+      state: absent
       become: yes
-
-      loop: "{{user_dir}}"
-        # - chandru
-        # - balaj
+      loop: "{{ orphan_dirs_by_host[inventory_hostname] | default([]) }}"
