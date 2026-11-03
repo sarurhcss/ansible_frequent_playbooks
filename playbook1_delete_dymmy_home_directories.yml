@@ -7,6 +7,15 @@
         msg: "Server: {{ inventory_hostname }} | Directory: {{ item }}"
       loop: "{{ orphan_dirs_by_host[inventory_hostname] | default([]) }}"
 
+    - name: Validate orphan directory paths
+      ansible.builtin.assert:
+        that:
+          - item.startswith('/home/users/') or item.startswith('/home/homeldap/')
+          - item not in ['/home/users/', '/home/homeldap/']
+        fail_msg: "Invalid deletion path: {{ item }}"
+      loop: "{{ orphan_dirs_by_host[inventory_hostname] | default([]) }}"
+
+
     - name: Delete the selected orphan home directories
       become: yes
       ansible.builtin.file:
