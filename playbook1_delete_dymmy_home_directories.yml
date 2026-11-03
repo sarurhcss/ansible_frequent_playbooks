@@ -6,7 +6,6 @@
       ansible.builtin.debug:
         msg: "Server: {{ inventory_hostname }} | Directory: {{ item }}"
       loop: "{{ orphan_dirs_by_host[inventory_hostname] | default([]) }}"
-
     - name: Delete the selected orphan home directories
       ansible.builtin.file:
         path: "{{ item }}"
