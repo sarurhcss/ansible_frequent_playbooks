@@ -1,14 +1,15 @@
 ---
 - name: Delete the Home Dir
   hosts: all
-  tasks:  
+  tasks:
     - name: Display orphan directories selected for deletion
       ansible.builtin.debug:
         msg: "Server: {{ inventory_hostname }} | Directory: {{ item }}"
       loop: "{{ orphan_dirs_by_host[inventory_hostname] | default([]) }}"
+
     - name: Delete the selected orphan home directories
+      become: yes
       ansible.builtin.file:
         path: "{{ item }}"
-      state: absent
-      become: yes
+        state: absent
       loop: "{{ orphan_dirs_by_host[inventory_hostname] | default([]) }}"
